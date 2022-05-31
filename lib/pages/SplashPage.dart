@@ -1,6 +1,8 @@
 
 import 'package:animeku/utils/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 class SplashPage extends StatefulWidget {
   const SplashPage({ Key? key }) : super(key: key);
 
@@ -35,10 +37,11 @@ class _SplashPageState extends State<SplashPage> {
             ),
           ),
           SizedBox(height: 10,),
-          Text("Loading....", style: TextStyle(
-            color: Colors.black87,
-            fontSize: 20
-          ),),
+          SpinKitSquareCircle(
+            color: Colors.white,
+            size: 50.0,
+          ),
+          Text("Loading...", style: GoogleFonts.abel(fontSize: 20,),),
         ],
       ),
     );
