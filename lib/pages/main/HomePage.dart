@@ -1,5 +1,7 @@
 import 'package:animeku/model/icon_list_model.dart';
 import 'package:animeku/utils/theme.dart';
+import 'package:animeku/widget/cardAnime.dart';
+import 'package:animeku/widget/header.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,42 +19,6 @@ class _HomePageState extends State<HomePage> {
   
   
   Widget build(BuildContext context) {
-     var size = MediaQuery.of(context).size;
-    /*24 is for notification bar on Android*/
-    final double itemHeight = (size.height - kToolbarHeight - 100) / 2;
-    final double itemWidth = size.width / 2;
-    
-    Widget header() {
-      return Container(
-        decoration: BoxDecoration(
-        color: primaryColor,
-          borderRadius: BorderRadius.circular(9),
-            boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3), 
-          ),
-        ],
-          border: Border.all(color: Colors.white10, width: 1)
-        ),
-        padding: EdgeInsets.all(10),  
-        child: Row(
-          children: [
-            Center(
-              child: Text('Logo', style: GoogleFonts.alatsi(
-                fontSize: 20,
-                color: Colors.black
-              ),),  
-            ),
-            Spacer(),
-            Icon(Icons.search_outlined, color: Colors.black,  size: 30,),
-            SizedBox(width: 7,),
-          ],
-        ),
-      );
-    }
     Widget containerSlider() {
       return  ClipRRect(
         borderRadius: BorderRadius.circular(12),
@@ -175,19 +141,13 @@ class _HomePageState extends State<HomePage> {
             ),),
           ),
           GridView.count(
-             childAspectRatio: (itemWidth / itemHeight),
+             childAspectRatio: cardAnimeSize(context),
             shrinkWrap: true,
             padding: EdgeInsets.all(10),
             physics: BouncingScrollPhysics() ,
             scrollDirection: Axis.vertical,
             crossAxisCount: 3, children: List.generate(10, (index) {
-            return Container(
-              margin: EdgeInsets.all(2),
-              child: Container(                           
-                color: Colors.white,
-                child: Text("anime list new"),
-              ),
-            );
+            return CardAnime();
           },),),
         ],
       );
@@ -208,7 +168,7 @@ class _HomePageState extends State<HomePage> {
     }
     return ListView(
       children: [
-        header(),
+        Header(text: "Home"),
         SizedBox(height: 5,),
         slider(),
         SizedBox(height: 5,),

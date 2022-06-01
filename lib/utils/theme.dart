@@ -52,3 +52,21 @@ FontWeight regular = FontWeight.w400;
 FontWeight medium = FontWeight.w500;
 FontWeight semiBold = FontWeight.w600;
 FontWeight bold = FontWeight.w700;
+
+
+/// Get Device with
+double deviceWidth(BuildContext context) {
+  return MediaQuery.of(context).size.width;
+}
+
+/// Get Device Height
+double deviceHeight(BuildContext context) {
+  return MediaQuery.of(context).size.height;
+}
+
+
+double cardAnimeSize(BuildContext context) {
+  final double itemHeight = (deviceHeight(context) - kToolbarHeight - 100) / 2;
+  final double itemWidth = deviceWidth(context) / 2;
+  return  itemWidth/itemHeight;
+}

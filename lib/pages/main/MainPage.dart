@@ -1,4 +1,5 @@
 import 'package:animeku/pages/main/HomePage.dart';
+import 'package:animeku/pages/main/JadwalPage.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -16,6 +17,8 @@ class _MainPageState extends State<MainPage> {
 
   Widget bottonNavigation() {
       return BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+
         currentIndex:_stateBottom,
         onTap: (int value) {
           setState(() {
@@ -24,27 +27,33 @@ class _MainPageState extends State<MainPage> {
         },
     items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(
-        icon: Icon(Icons.call),
-        label: 'Calls',
+        icon: Icon(Icons.home),
+        label: 'Home',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.camera),
-        label: 'Camera',
+        icon: Icon(Icons.calendar_month),
+        label: 'On Going',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.chat),
-        label: 'Chats',
+        icon: Icon(Icons.folder),
+        label: 'Folder',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.person),
+        label: 'Profile',
       ),
     ],
-     );
+   );
   }
 
   bodys() {
     switch (_stateBottom) {
       case 0:
         return HomePage();
+      case 1:
+        return JadwalPage();
       default:
-        HomePage();
+        return HomePage();
     }
   }
     
