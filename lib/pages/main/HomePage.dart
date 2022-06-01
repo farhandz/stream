@@ -1,6 +1,9 @@
+import 'package:animeku/model/icon_list_model.dart';
 import 'package:animeku/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+ 
 
 class HomePage extends StatefulWidget {
   const HomePage({ Key? key }) : super(key: key);
@@ -136,16 +139,27 @@ class _HomePageState extends State<HomePage> {
 
 
 
-    // Widget iconAnime() {
-    // return Row(
-    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //   children: List.generate(2, (index) {
-    //     return Container(
-    //       child: ,
-    //     );
-    //   }),
-    //  );
-    // }
+    Widget iconAnime() {
+    return Container(
+      margin: EdgeInsets.all(15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: List.generate(iconLists.length, (index) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SvgPicture.asset(iconLists[index].icon, height: 40,),
+              Container(
+                margin: EdgeInsets.only(top: 8),
+                child:  Text(iconLists[index].title),
+              ),
+              
+            ],
+          );
+        }),
+       ),
+    );
+    }
     
     
 
@@ -197,6 +211,8 @@ class _HomePageState extends State<HomePage> {
         header(),
         SizedBox(height: 5,),
         slider(),
+        SizedBox(height: 5,),
+        iconAnime(),
         SizedBox(height: 5,),
         animeList()
       ],
