@@ -1,3 +1,4 @@
+import 'package:animeku/pages/DetailAnime.dart';
 import 'package:animeku/pages/main/HomePage.dart';
 import 'package:animeku/pages/SplashPage.dart';
 import 'package:animeku/pages/main/MainPage.dart';
@@ -55,7 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
         debugShowCheckedModeBanner: false,
         routes:  {
           '/' : (context) =>  SplashPage(),
-          '/home' : (context) =>  MainPage()
+          '/home' : (context) =>  MainPage(),
+          '/detail' : (context) => DetailAnime()
         },
       ),
     );

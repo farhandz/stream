@@ -134,11 +134,16 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            margin: EdgeInsets.all(10),
-            child: Text('New Anime', style: TextStyle(
-              color: Colors.amber
-            ),),
+          GestureDetector(
+            onTap: () {
+              print("asxasx");
+            },
+            child: Container(
+              margin: EdgeInsets.all(10),
+              child: Text('New Anime', style: TextStyle(
+                color: Colors.amber
+              ),),
+            ),
           ),
           GridView.count(
              childAspectRatio: cardAnimeSize(context),
