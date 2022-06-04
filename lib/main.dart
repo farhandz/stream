@@ -1,3 +1,4 @@
+import 'package:animeku/injector.dart';
 import 'package:animeku/pages/DetailAnime.dart';
 import 'package:animeku/pages/main/HomePage.dart';
 import 'package:animeku/pages/SplashPage.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  setupLocator();
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
