@@ -23,7 +23,7 @@ class _JadwalPageState extends State<JadwalPage> {
             physics: BouncingScrollPhysics() ,
             scrollDirection: Axis.vertical,
             crossAxisCount: 3, children: List.generate(10, (index) {
-            return CardAnime();
+            return Container();
           },),);
     }
 

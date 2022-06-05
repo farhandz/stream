@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 double defaultMargin = 30.0;
 
-Color primaryColor = Color(0xff86EDFF);
+Color primaryColor = Color(0xff1252A3);
 Color secondaryColor = Color(0xff38ABBE);
 Color alertColor = Color(0xffED6363);
 Color priceColor = Color(0xff2C96F1);
@@ -66,7 +66,7 @@ double deviceHeight(BuildContext context) {
 
 
 double cardAnimeSize(BuildContext context) {
-  final double itemHeight = (deviceHeight(context) - kToolbarHeight - 100) / 2;
+  final double itemHeight = (deviceHeight(context) - kToolbarHeight - 210) / 2;
   final double itemWidth = deviceWidth(context) / 2;
   return  itemWidth/itemHeight;
 }

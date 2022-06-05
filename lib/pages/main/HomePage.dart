@@ -1,10 +1,12 @@
 import 'package:animeku/model/icon_list_model.dart';
+import 'package:animeku/provider/home_provider.dart';
 import 'package:animeku/utils/theme.dart';
 import 'package:animeku/widget/cardAnime.dart';
 import 'package:animeku/widget/header.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
  
 
 class HomePage extends StatefulWidget {
@@ -117,7 +119,9 @@ class _HomePageState extends State<HomePage> {
               SvgPicture.asset(iconLists[index].icon, height: 40,),
               Container(
                 margin: EdgeInsets.only(top: 8),
-                child:  Text(iconLists[index].title),
+                child:  Text(iconLists[index].title, style: TextStyle(
+                  color: Colors.white
+                ),),
               ),
               
             ],
@@ -130,32 +134,26 @@ class _HomePageState extends State<HomePage> {
     
 
     Widget animeList() {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          GestureDetector(
-            onTap: () {
-              print("asxasx");
-            },
-            child: Container(
-              margin: EdgeInsets.all(10),
-              child: Text('New Anime', style: TextStyle(
-                color: Colors.amber
-              ),),
-            ),
-          ),
-          GridView.count(
+      return Builder(builder: (context) {
+        return Consumer<HomeProvider>(builder: (contex, value, _) {
+          if (value.collectionList == null) {
+              value.getAll(context);
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          return GridView.count(
              childAspectRatio: cardAnimeSize(context),
             shrinkWrap: true,
             padding: EdgeInsets.all(10),
             physics: BouncingScrollPhysics() ,
             scrollDirection: Axis.vertical,
-            crossAxisCount: 3, children: List.generate(10, (index) {
-            return CardAnime();
-          },),),
-        ],
-      );
+            crossAxisCount: 2, children: List.generate(value.collectionList!.length, (index) {
+                var collection = value.collectionList?[index];
+            return CardAnime(collection: collection);
+          },),);
+        });
+      });
     }
     
     Widget slider() {

@@ -1,5 +1,6 @@
 import 'package:animeku/pages/main/HomePage.dart';
 import 'package:animeku/pages/main/JadwalPage.dart';
+import 'package:animeku/utils/theme.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -18,7 +19,7 @@ class _MainPageState extends State<MainPage> {
   Widget bottonNavigation() {
       return BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-
+          backgroundColor: primaryColor,
         currentIndex:_stateBottom,
         onTap: (int value) {
           setState(() {

@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 enum RequestType { GET, POST, DELETE }
 
 class BaseService {
- Dio _dio =  new Dio();
-  late Options _headersOption;
+    Dio _dio =  new Dio();
+     Options ? _headersOption;
 
  Future<dynamic> request(String url, RequestType type, BuildContext context,
       {dynamic? data, bool? useToken}) async {
@@ -43,7 +43,7 @@ class BaseService {
     response = json.decode(response.toString());
 
     //* if 401 then return to login
-    if (response["code"] == 403) {
+  if (response["code"] == 403) {
       DialogUtils.instance.showInfo(context, 
         "Session Expired, silahkan masukkan api key yang valid", 
         Icons.error, "OK", onClick: () async {

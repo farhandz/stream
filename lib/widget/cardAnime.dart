@@ -1,90 +1,123 @@
+import 'package:animeku/model/new_anime_list.dart';
 import 'package:animeku/utils/theme.dart';
 import 'package:flutter/material.dart';
 class CardAnime extends StatelessWidget {
-  const CardAnime({ Key? key }) : super(key: key);
+      AnimeNew ?  collection;
+    CardAnime({ Key? key, required this.collection }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
         margin: EdgeInsets.all(2),
-        child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          width: double.infinity,
-                          padding: EdgeInsets.all(8),
-                          color: primaryColor.withOpacity(.5),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Flexible(
-                                child: Container(
-                                  child: Text(
-                                    'Demon Slayesaasasasxasx',
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 3,
+        child: Container(
+          decoration: BoxDecoration(
+          color: primaryColor.withOpacity(.5),
+          borderRadius: BorderRadius.circular(10)
+
+          ),
+        padding: const EdgeInsets.all(5.0),
+          child: Column(
+            children: [
+              Container(
+                width: 200,
+                height: 130,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage("${collection!.img.split('?quality=90&resize=154,104)')[0]}")
+                  )
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                        color: primaryColor.withOpacity(.5),
+                    ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: Flexible(
+                              child: Text(
+                                '${collection!.title}',
+                                overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
                                     softWrap: false,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                    ),
-                                  ),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 15,
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                         margin: EdgeInsets.all(5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                             
-                              padding: EdgeInsets.all(6),
-                              color: primaryColor.withOpacity(.6),
-                              child: Text("Tv", style: TextStyle(
-                                color: Colors.white
-                              ),),
                             ),
-                            Container(
-                              padding: EdgeInsets.all(3),
-                              color: primaryColor.withOpacity(.6),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Icon(Icons.star, size: 20, color: Colors.white,),
-                                  SizedBox(width: 5,),
-                                  Text("7.03", style: TextStyle(
-                                    color: Colors.white
-                                  ),
-                                  ),
-                                ],
+                          ),
+                        ],
+                      ),
+              ),
+              Container(
+                  padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                        color: primaryColor.withOpacity(.5),
+                    ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Flexible(
+                              child: Text(
+                                collection!.episode,
+                                overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    softWrap: false,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 9,
+                                ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      Ink.image(
-                        image: AssetImage(
-                          'assets/banner.png',
-                        ),
-                        fit: BoxFit.cover,
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(12),
-                          onTap: () {},
-                        ),
+              ),
+              Spacer(),
+              Container(
+                    decoration: BoxDecoration(
+                        color: primaryColor.withOpacity(.5),
+                    ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: Flexible(
+                              child: Text(
+                                collection!.rilis,
+                                overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    softWrap: false,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 9,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-      ),
+              ),
+              
+            ],
+          ),
+        ),
+      )
     );
   }
+}
+
+class $ {
 }

@@ -28,7 +28,7 @@ class Header extends StatelessWidget {
             Center(
               child: Text(text, style: GoogleFonts.alatsi(
                 fontSize: 20,
-                color: Colors.black
+                color: Colors.white
               ),),  
             ),
             Spacer(),

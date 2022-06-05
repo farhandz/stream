@@ -1,28 +1,28 @@
 class AnimeNew {
   AnimeNew({
-    required this.id,
-    required this.date,
-    required this.data,
-    required this.V,
+    required this.img,
+    required this.title,
+    required this.episode,
+    required this.rilis,
   });
-  late final String id;
-  late final String date;
-  late final List<AnimeNew> data;
-  late final int V;
+  late final String img;
+  late final String title;
+  late final String episode;
+  late final String rilis;
   
   AnimeNew.fromJson(Map<String, dynamic> json){
-    id = json['_id'];
-    date = json['date'];
-    data = List.from(json['data']).map((e)=>AnimeNew.fromJson(e)).toList();
-    V = json['__v'];
+    img = json['img'];
+    title = json['title'];
+    episode = json['episode'];
+    rilis = json['rilis'];
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['_id'] = id;
-    _data['date'] = date;
-    _data['data'] = data.map((e)=>e.toJson()).toList();
-    _data['__v'] = V;
+    _data['img'] = img;
+    _data['title'] = title;
+    _data['episode'] = episode;
+    _data['rilis'] = rilis;
     return _data;
   }
 }

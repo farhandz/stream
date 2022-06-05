@@ -3,7 +3,9 @@ import 'package:animeku/pages/DetailAnime.dart';
 import 'package:animeku/pages/main/HomePage.dart';
 import 'package:animeku/pages/SplashPage.dart';
 import 'package:animeku/pages/main/MainPage.dart';
+import 'package:animeku/provider/home_provider.dart';
 import 'package:animeku/provider/list_provider.dart';
+import 'package:animeku/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -51,10 +53,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return MultiProvider(
       providers: [
        ChangeNotifierProvider(
-          create: (context) => ListProvider(),
+          create: (context) => HomeProvider(),
         ),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.black12,
+          primarySwatch: Colors.blue,
+          fontFamily: 'NunitoSans',
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
         debugShowCheckedModeBanner: false,
         routes:  {
           '/' : (context) =>  SplashPage(),
